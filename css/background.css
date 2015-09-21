@@ -3,3 +3,7 @@
     height: 100%;
     overflow: auto;
 }
+
+main {
+    margin-top: 20px; 
+}
