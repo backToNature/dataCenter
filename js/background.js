@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
     
     var M_ajax = require('widget/data.js');
+    var $$wapData = require('model/wapData.js');
     // 数据处理模块
     var M_dataDeal = (function () {
         var pickData = function (data, str) {
