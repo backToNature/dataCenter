@@ -163,8 +163,16 @@ var M_chart =function (obj) {
 // 自定义
 var userSettingWays = {
     // 系统&浏览器信息
-    'SYSTEMANDBROWSER': function (data) {
+    'SYSTEMANDBROWSER': function () {
+        return {
+            getSystemVersionCategory: function (data) {
+                var temp;
+                _.mapObject(data, function (val, key) {
 
+                    return val
+                });
+            }
+        };
     },
     // 浮条使用次数
     'FLOATBAR-USE-TIME': function (data) {
@@ -281,7 +289,6 @@ $(function () {
             data: chart_uv_systemType
         });
 
-        var androidDetailObj =
 
 
     };
