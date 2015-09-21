@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>畅言数据平台</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="./css/background.css">
+</head>
+<body>
+<div class="container-fluid">
+    <header class="col-lg-2 col-sm-3 side-nav">
+        <h1>畅言数据平台</h1>
+        <nav class="nav nav-pills nav-stacked">
+            <li class="nav-header ng-binding">设定</li>
+            <li ui-sref-active="active">
+                <a ui-sref="ui" class="ng-binding" href="#/ui">
+                    <span class="glyphicon glyphicon-calendar"></span> 日期
+                        <span>
+                            <input value="20150919" id="myDate" placeholder="请选择日期" size="16" type="text" readonly class="form_datetime">
+                        </span>
+                </a>
+            </li>
+            <li ui-sref-active="active"><a ui-sref="general" class="ng-binding" href="#/general"><span
+                    class="glyphicon glyphicon-list-alt"></span> 小时
+                <select id="myHours">
+                    <option value="allDay">allDay</option>
+                    <option value="00">00</option>
+                    <option value="00">01</option>
+                    <option value="00">02</option>
+                    <option value="00">03</option>
+                    <option value="00">04</option>
+                    <option value="00">05</option>
+                    <option value="00">06</option>
+                    <option value="00">07</option>
+                    <option value="00">08</option>
+                    <option value="00">09</option>
+                    <option value="00">10</option>
+                    <option value="00">11</option>
+                    <option value="00">12</option>
+                    <option value="00">13</option>
+                    <option value="00">14</option>
+                    <option value="00">15</option>
+                    <option value="00">16</option>
+                    <option value="00">17</option>
+                    <option value="00">18</option>
+                    <option value="00">19</option>
+                    <option value="00">20</option>
+                    <option value="00">21</option>
+                    <option value="00">22</option>
+                    <option value="00">23</option>
+                </select>
+            </a></li>
+            <li ui-sref-active="active"><a ui-sref="io" class="ng-binding" href="#/io"><span
+                    class="glyphicon glyphicon-pushpin"></span> appid <input id="myAppid" type="text" placeholder="请输入查询站点的appid"></a></li>
+            <li class="divider"></li>
+            <li class="nav-header ng-binding">特殊查询</li>
+            <li ui-sref-active="active">
+                <a ui-sref="ui" class="ng-binding">
+                    <span class="glyphicon glyphicon-edit"></span> key
+                    <input id="myKey" placeholder="请输入要查询的key值" size="16" type="text" />
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="ui" class="ng-binding">
+                    <button type="button" class="btn btn-primary  btn-lg" id="search">查 询</button>
+                </a>
+            </li>
+        </nav>
+    </header>
+    <main class="col-lg-10 col-sm-9 col-lg-offset-2 col-sm-offset-3">
+        <div class="header-history">
+            <ol class="breadcrumb">
+                <li><a href="#">日期：<span>20150702</span></a></li>
+                <li><a href="#">小时：<span>12</span></a></li>
+                <li><a href="#">appid:<span>cyAFWssf</span></a></li>
+                <li class="active">key：<span>LOG-WAP-BARRAGE</span></li>
+            </ol>
+        </div>
+        <section class="chart-wrapper">
+            <section class="chart-pv col-lg-6 col-sm-6">
+                <h1>pv数据</h1>
+                <div id="pv_isvType">
+
+                </div>
+                <h2>系统统计</h2>
+                <div id="pv_system">
+
+                </div>
+                <div id="pv_system_detail">
+
+                </div>
+                <h2>浏览器统计</h2>
+                <div id="pv_browser">
+
+                </div>
+            </section>
+
+            <section class="chart-uv col-lg-6 col-sm-6">
+                <h1>uv数据</h1>
+                <div id="uv_isvType">
+
+                </div>
+                <h2>系统统计</h2>
+                <div id="uv_system">
+
+                </div>
+                <div id="uv_system_detail">
+
+                </div>
+                <h2>浏览器统计</h2>
+                <div id="uv_browser">
+
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script src="./lib/jquery-2.1.4.min.js"></script>
+<script src="./lib/Underscore.1.8.2.min.js"></script>
+<script src="./lib/bootstrap.min.js"></script>
+<script src="./lib/highcharts.js"></script>
+<script src="./lib/exporting.js"></script>
+<script type="text/javascript" src="./lib/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./lib/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="./js/background.js"></script>
+</body>
+</html>

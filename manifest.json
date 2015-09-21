@@ -1,0 +1,23 @@
+{
+	"name": "cyData",
+	"version": "1.0",
+	"description": "畅言数据插件",
+	"manifest_version": 2,
+    "browser_action": {
+        "default_icon": "./images/icon.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+//        "scripts": ["./js/background.js"]
+        "page": "./background.html"
+    },
+	"minimum_chrome_version": "18",
+    "permissions": [
+        "tabs",
+        "storage",
+        "http://*/*",
+        "https://*/*",
+        "ftp://*/*",
+        "\u003Call_urls>"
+    ]
+}
