@@ -12,6 +12,14 @@ define(function (require, exports, module){
             return temp;
         };
         return {
+            // 分堆
+            branchPile: function (data, arr) {
+                var temp = {};
+                _.each(arr, function (val) {
+                        temp[val] = pickData(data, val);
+                });
+                return temp;
+            },
             // 挑选出所有PV数据
             pickPV: function (data) {
                 return pickData(data, 'PV_');

@@ -45,7 +45,12 @@ define(function(require, exports, module) {
     $(function () {
         var callback = function (data) {
             $$wapData_model.set('allData', data);
-            $$pie.init({el: '#stable_beta'});
+            $$pie.init({
+                el: '#stable_beta',
+                allData: $$wapData_model.get('allSystemObj'),
+                renderArr: ['BETA', 'STABLE'],
+                title: 'stable与beta占比'
+            });
         };
         $('#search').on('click', function (e) {
             e.preventDefault();

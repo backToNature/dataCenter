@@ -1,20 +1,31 @@
 
 define(function (require, exports, module){
-
+    var $$data =require('widget/pickData/wap.js');
     module.exports = (function () {
-        var render = function (obj) {
-            var $wrapper = $(obj.el).find('#singleChart_main');
+
+        var render = function (obj, defaultParams) {
+            var pileData = $$data.branchPile(obj.allData, obj.renderArr);
+            _.mapObject(pileData, function (val, key) {
+                _.each(defaultParams, function (v) {
+                    pileData[key] = $$data['pick' + v](pileData[key]);
+                });
+            });
+            var pieData = [];
+            _.mapObject(pileData, function (val, key) {
+                pieData.push([key, $$data.count(val)]);
+            });
+            var $wrapper = $(obj.el).find('.singleChart_main');
             $wrapper.highcharts({
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,
                     plotShadow: false
                 },
-//                title: {
-//                    text: obj.title
-//                },
+               title: {
+                   text: obj.title
+               },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    pointFormat: '{series.name}: <b>{point.y}</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -30,8 +41,8 @@ define(function (require, exports, module){
                 },
                 series: [{
                     type: 'pie',
-                    name: 'Browser share',
-                    data: obj.renderData
+                    name: '数量',
+                    data: pieData
                 }]
             });
         };
@@ -42,11 +53,13 @@ define(function (require, exports, module){
             var $select_device = $wrapper.find('.select_device');
             var $select_code_version = $wrapper.find('.select_code_version');
             $select_uv_pv.on('change', function () {
-                alert(1);
+                var defaultParams = [$select_uv_pv.val(), $select_device.val()];
+                render(obj, defaultParams);
             });
 
             $select_device.on('change', function () {
-                alert(1);
+                var defaultParams = [$select_uv_pv.val(), $select_device.val()];
+                render(obj, defaultParams);
             });
 
             $select_code_version.on('change', function () {
@@ -62,7 +75,8 @@ define(function (require, exports, module){
                  * @param obj.allData
                  * @param obj.renderData
                  */
-                render(obj);
+                 var defaultParams = ['PV', 'WAP'];
+                render(obj, defaultParams);
                 eventBind(obj);
             }
         };
