@@ -1,9 +1,38 @@
+body {
+    font-family: "Microsoft YaHei","Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .side-nav {
     position: fixed;
     height: 100%;
     overflow: auto;
+    border-right: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.content {
+    margin-top: 50px;
 }
 
 main {
-    margin-top: 20px; 
+    height: 1800px;
+    background: #eee;
+}
+
+.normal_form_wrapper_header {
+    text-align: center;
+}
+
+.singleChart {
+    padding: 10px;
+}
+
+.singleChartWrapper {
+    background: #fff;
+}
+
+.singleChart_header{
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
 }

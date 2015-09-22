@@ -1,11 +1,11 @@
 define(function(require, exports, module) {
 
     // 数据请求模块
-    module. exports = (function () {
+    module.exports = (function () {
         var getData = function (url, fn) {
             $.ajax({
-                // url: url,
-                url: '../test.json',
+                url: url,
+//                url: '../test.json',
                 dataType: 'json',
                 scriptCharset: 'utf-8',
                 cache: false,

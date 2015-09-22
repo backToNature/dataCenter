@@ -8,112 +8,143 @@
     <link rel="stylesheet" href="./css/background.css">
 </head>
 <body>
-<div class="container-fluid">
-    <header class="col-lg-2 col-sm-3 side-nav">
-        <h2>畅言数据平台</h2>
-        <nav class="nav nav-pills nav-stacked">
-            <li class="nav-header ng-binding">设定</li>
-            <li ui-sref-active="active">
-                <a ui-sref="ui" class="ng-binding" href="#/ui">
-                    <span class="glyphicon glyphicon-calendar"></span> 日期
-                        <span>
-                            <input value="20150919" id="myDate" placeholder="请选择日期" size="16" type="text" readonly class="form_datetime">
-                        </span>
-                </a>
-            </li>
-            <li ui-sref-active="active"><a ui-sref="general" class="ng-binding" href="#/general"><span
-                    class="glyphicon glyphicon-list-alt"></span> 小时
-                <select id="myHours">
-                    <option value="allDay">allDay</option>
-                    <option value="00">00</option>
-                    <option value="00">01</option>
-                    <option value="00">02</option>
-                    <option value="00">03</option>
-                    <option value="00">04</option>
-                    <option value="00">05</option>
-                    <option value="00">06</option>
-                    <option value="00">07</option>
-                    <option value="00">08</option>
-                    <option value="00">09</option>
-                    <option value="00">10</option>
-                    <option value="00">11</option>
-                    <option value="00">12</option>
-                    <option value="00">13</option>
-                    <option value="00">14</option>
-                    <option value="00">15</option>
-                    <option value="00">16</option>
-                    <option value="00">17</option>
-                    <option value="00">18</option>
-                    <option value="00">19</option>
-                    <option value="00">20</option>
-                    <option value="00">21</option>
-                    <option value="00">22</option>
-                    <option value="00">23</option>
-                </select>
-            </a></li>
-            <li ui-sref-active="active"><a ui-sref="io" class="ng-binding" href="#/io"><span
-                    class="glyphicon glyphicon-pushpin"></span> appid <input id="myAppid" type="text" placeholder="请输入查询站点的appid"></a></li>
-            <li class="divider"></li>
-            <li class="nav-header ng-binding">特殊查询</li>
-            <li ui-sref-active="active">
-                <a ui-sref="ui" class="ng-binding">
-                    <span class="glyphicon glyphicon-edit"></span> key
-                    <input id="myKey" placeholder="请输入要查询的key值" size="16" type="text" />
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="ui" class="ng-binding">
-                    <button type="button" class="btn btn-primary  btn-lg" id="search">查 询</button>
-                </a>
-            </li>
-        </nav>
-    </header>
-    <main class="col-lg-10 col-sm-9 col-lg-offset-2 col-sm-offset-3">
-        <div class="header-history">
-            <ol class="breadcrumb">
-                <li class="seeDate"></li>
-                <li class="seeHour"></li>
-                <li  class="seeAppId"></li>
-                </li>
-            </ol>
+<section class="main-header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="font-size: 30px;color: #4ea5ef;">畅言数据平台</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <label for="select_uv_pv">数据类型:</label>
+                        <select class="form-control" id="select_uv_pv">
+                            <option value="PV">PV</option>
+                            <option value="UV">UV</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select_device">终端类型:</label>
+                        <select class="form-control" id="select_device">
+                            <option value="WAP">WAP</option>
+                            <option value="PC">PC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select_code_version">代码版本:</label>
+                        <select class="form-control" id="select_code_version">
+                            <option value="V2">V2</option>
+                            <option value="V1">V1</option>
+                            <option value="V1">V0</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
         </div>
-        <section class="chart-wrapper">
-            <section class="chart-pv col-lg-6 col-sm-6">
-                <h1>pv数据</h1>
-                <div id="pv_isvType">
+    </nav>
+</section>
+
+<div class="container-fluid content">
+
+    <div class="left_form col-lg-2 col-sm-3 side-nav">
+        <div class="normal_form_wrapper">
+            <div class="normal_form_wrapper_header">
+                <h2>常规字段</h2>
+            </div>
+            <div class="normal_form_wrapper_main">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="myDate" class="col-sm-3 control-label">日期</label>
+                        <div class="col-sm-9">
+                            <input type="text" value="20150919" class="form-control form_datetime" id="myDate" readonly placeholder="请选择日期">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="myHours" class="col-sm-3 control-label">小时</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="myHours">
+                                <option value="allDay">allDay</option>
+                                <option value="00">00</option>
+                                <option value="00">01</option>
+                                <option value="00">02</option>
+                                <option value="00">03</option>
+                                <option value="00">04</option>
+                                <option value="00">05</option>
+                                <option value="00">06</option>
+                                <option value="00">07</option>
+                                <option value="00">08</option>
+                                <option value="00">09</option>
+                                <option value="00">10</option>
+                                <option value="00">11</option>
+                                <option value="00">12</option>
+                                <option value="00">13</option>
+                                <option value="00">14</option>
+                                <option value="00">15</option>
+                                <option value="00">16</option>
+                                <option value="00">17</option>
+                                <option value="00">18</option>
+                                <option value="00">19</option>
+                                <option value="00">20</option>
+                                <option value="00">21</option>
+                                <option value="00">22</option>
+                                <option value="00">23</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="myAppid" class="col-sm-3 control-label">appid</label>
+                        <div class="col-sm-9">
+                            <input id="myAppid" class="form-control" type="text" placeholder="请输入查询站点的appid">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button id="search" type="submit" class="btn btn-default">查询</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    <main class="col-lg-10 col-sm-9 col-lg-offset-2 col-sm-offset-3">
+        <section class="singleChart col-lg-4">
+            <div class="singleChartWrapper" id="stable_beta">
+                <div class="singleChart_header">
+                    <h3>stable与beta占比</h3>
+                    <form class="navbar-form" role="search">
+                        <div class="form-group">
+                            <select class="form-control select_uv_pv">
+                                <option value="PV">PV</option>
+                                <option value="UV">UV</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control select_device">
+                                <option value="WAP">WAP</option>
+                                <option value="PC">PC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control select_code_version">
+                                <option value="V2">V2</option>
+                                <option value="V1">V1</option>
+                                <option value="V1">V0</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="singleChart_main">
+                </div>
+                <div class="singleChart_footer">
 
                 </div>
-                <h2>系统统计</h2>
-                <div id="pv_system">
+            </div>
 
-                </div>
-                <div id="pv_system_detail">
-
-                </div>
-                <h2>浏览器统计</h2>
-                <div id="pv_browser">
-
-                </div>
-            </section>
-
-            <section class="chart-uv col-lg-6 col-sm-6">
-                <h1>uv数据</h1>
-                <div id="uv_isvType">
-
-                </div>
-                <h2>系统统计</h2>
-                <div id="uv_system">
-
-                </div>
-                <div id="uv_system_detail">
-
-                </div>
-                <h2>浏览器统计</h2>
-                <div id="uv_browser">
-
-                </div>
-            </section>
         </section>
+
     </main>
 </div>
 
