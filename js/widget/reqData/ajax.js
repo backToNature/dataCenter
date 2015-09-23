@@ -4,8 +4,8 @@ define(function(require, exports, module) {
     module.exports = (function () {
         var getData = function (url, fn) {
             $.ajax({
-                // url: url,
-               url: '../test.json',
+                url: url,
+//               url: '../test.json',
                 dataType: 'json',
                 scriptCharset: 'utf-8',
                 cache: false,

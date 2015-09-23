@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var M_ajax = require('widget/reqData/ajax.js');
     var $$wapData_model = require('model/wapData.js');
     var $$pie = require('widget/chart/pie.js');
+    var $$data = require('widget/pickData/wap.js');
 
     // 自定义
     var userSettingWays = {
@@ -50,6 +51,20 @@ define(function(require, exports, module) {
                 allData: $$wapData_model.get('allSystemObj'),
                 renderArr: ['BETA', 'STABLE'],
                 title: 'stable与beta占比'
+            });
+            $$pie.init({
+                el: '#system_percent',
+                allData: $$wapData_model.get('allSystemObj'),
+                renderArr: ['ANDROID', 'IOS', 'OTHERSYSTEM'],
+                funcObj: {
+                    ANDROID: function (data) {
+                        return $$data.pickSystemVersion(data);
+                    },
+                    IOS: function () {
+                        return $$data.pickSystemVersion(data);
+                    }
+                },
+                title: '系统份额占比'
             });
         };
         $('#search').on('click', function (e) {

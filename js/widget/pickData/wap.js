@@ -56,6 +56,29 @@ define(function (require, exports, module){
                 });
                 return obj;
             },
+            // 挑出所有系统版本
+            pickSystemVersion: function (data) {
+                var versionArr = [];
+                _.mapObject(data, function (val, key) {
+                    var version = key.split('-');
+                        version = version[version.length - 2];
+                    if (!_.isUndefined(version)) {
+                        var bigV = parseInt(version.split('_')[0]), smV = '_0';
+                        if (bigV >= 10 || bigV <= 0) {
+                            bigV = 1;
+                        }
+                        if (version.split('_').length > 1) {
+                            smV = '_' + version.split('_')[1][0];
+                        }
+                        version = bigV + smV;
+                        if (_.indexOf(versionArr, version) < 0 && !/[a-zA-Z]/.test(version)) {
+                            versionArr.push(version);
+                        }
+                    }
+
+                });
+                return versionArr;
+            },
             // 自定义挑选逻辑
             specialPick: function (data, str, fn) {
                 var temp = pickData(data, str);
@@ -76,10 +99,9 @@ define(function (require, exports, module){
                 var temp = {}, pro, self = this;
                 _.each(arr, function (val) {
                     pro = self.specialPick(data, val);
-                    temp[val]
+                    temp[val] = self.count(pro);
                 });
-
-
+                return _.pairs(temp);
             }
         };
     }());
