@@ -91,7 +91,7 @@ define(function(require, exports, module) {
                 }
             }
         });
-
+        var $$pie_M = require('model/pie.js');
         // 日历组件
         $(".form_datetime").datetimepicker({
             weekStart: 1,
