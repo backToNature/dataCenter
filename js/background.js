@@ -1,10 +1,9 @@
 define(function(require, exports, module) {
     
-    var M_ajax = require('widget/reqData/ajax.js');
     var $$wapData_model = require('model/wapData.js');
-    var $$pie = require('widget/chart/pie.js');
-    var $$data = require('widget/pickData/wap.js');
-
+    var $$pie_M = require('model/pie.js');
+    var $$data_M = require('model/data.js');
+    var $$event = Backbone.Events;
     // 自定义
     var userSettingWays = {
         // 系统&浏览器信息
@@ -44,54 +43,14 @@ define(function(require, exports, module) {
 
 
     $(function () {
-        var callback = function (data) {
-            $$wapData_model.set('allData', data);
-            $$pie.init({
-                el: '#stable_beta',
-                allData: $$wapData_model.get('allSystemObj'),
-                renderArr: ['BETA', 'STABLE'],
-                title: 'stable与beta占比'
-            });
-            $$pie.init({
-                el: '#system_percent',
-                allData: $$wapData_model.get('allSystemObj'),
-                renderArr: ['ANDROID', 'IOS', 'OTHERSYSTEM'],
-                funcObj: {
-                    ANDROID: function (data) {
-                        return $$data.pickSystemVersion(data);
-                    },
-                    IOS: function () {
-                        return $$data.pickSystemVersion(data);
-                    }
-                },
-                title: '系统份额占比'
-            });
-        };
         $('#search').on('click', function (e) {
             e.preventDefault();
             var date = $('#myDate').val(),
                 hour = $('#myHours').val(),
                 appid = $('#myAppid').val();
-            if (date == '') {
-                return;
-            }
-            if (hour == 'allDay') {
-                if (appid != '') {
-                    M_ajax.getDayAppid(date, appid, callback);
-                } else {
-                    M_ajax.getDay(date, callback);
-                }
-            } else {
-                date = date.substring(2, date.length) + '_' + hour;
-                if (appid != '') {
-                    M_ajax.getHourAppid(date, appid, callback);
-
-                } else {
-                    M_ajax.getHour(date, callback);
-                }
-            }
+            $$data_M.getData(date, hour, appid);
         });
-        var $$pie_M = require('model/pie.js');
+
         // 日历组件
         $(".form_datetime").datetimepicker({
             weekStart: 1,
@@ -104,5 +63,12 @@ define(function(require, exports, module) {
             todayHighlight: 1,
             language: 'zh-CN'
         });
+
+        //
+        $$event.on('EVT-CURRENT-CHANGED', function (data) {
+            var isvType = require('widget/pies/isvType.js');
+            isvType(data);
+        });
+
     });
 });

@@ -1,4 +1,5 @@
 define(function (require, exports, module){
+    var $$data = require('model/data.js');
     var Model = Backbone.Model.extend({
         defaults: {
             // 站点类型比
@@ -14,12 +15,19 @@ define(function (require, exports, module){
                     ['BETA', 14234]
                 ]
             },
+            // 系统占比
             systemPercents: {}
 
         },
         initialize: function () {
             var _this = this;
-            console.log(_this.attributes);
+
+            _.mapObject(_this.attributes, function (val, key) {
+                _this.on('change:' + key, function () {
+                    console.log(213);
+                });
+            });
+
         }
     });
 
