@@ -51,6 +51,16 @@ define(function(require, exports, module) {
             $$data_M.getData(date, hour, appid);
         });
 
+        $('#select_uv_pv,#select_device,#select_code_version').on('change', function () {
+            var allKeys = {
+                clientType: '-' + $('#select_uv_pv').val() + '-',
+                PUV: '-' + $('#select_device').val() + '-',
+                CodeVersion: '-' + $('#select_code_version').val() + '-'
+            };
+            $$data_M.set();
+
+
+        });
         // 日历组件
         $(".form_datetime").datetimepicker({
             weekStart: 1,
@@ -68,6 +78,8 @@ define(function(require, exports, module) {
         $$event.on('EVT-CURRENT-CHANGED', function (data) {
             var isvType = require('widget/pies/isvType.js');
             isvType(data);
+
+
         });
 
     });

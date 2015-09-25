@@ -32,11 +32,7 @@ define(function (require, exports, module){
                 _.mapObject(allKeys, function (val, key) {
                     currentData = pickData(currentData, val);
                 });
-//                console.log(currentData);
-                console.log($$pickData.diyPieData(currentData, {
-                    '-STABLE-': 'STABLE',
-                    '-BETA-': 'BETA'
-                }));
+
                 _this.set('currentData', currentData);
                 $$event.trigger('EVT-CURRENT-CHANGED', currentData);
 
