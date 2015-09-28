@@ -1,6 +1,6 @@
 {
 	"name": "cyData",
-	"version": "1.0",
+	"version": "2.0",
 	"description": "畅言数据插件",
 	"manifest_version": 2,
     "browser_action": {

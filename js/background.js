@@ -2,43 +2,6 @@ define(function(require, exports, module) {
     
     var $$data_M = require('model/data.js');
     var $$event = Backbone.Events;
-    // 自定义
-    var userSettingWays = {
-        // 系统&浏览器信息
-        'SYSTEMANDBROWSER': function () {
-            return {
-                getSystemVersionCategory: function (data) {
-                    var temp;
-                    _.mapObject(data, function (val, key) {
-
-                        return val
-                    });
-                }
-            };
-        },
-        // 浮条使用次数
-        'FLOATBAR-USE-TIME': function (data) {
-
-        },
-        // 畅点使用次数
-        'LAYER-USE-TIME': function (data) {
-
-        },
-        // 评论框展示次数
-        'MAINWRAPPER-DISPLAY-TIME': function (data) {
-
-        },
-        // 弹幕关闭点击次数
-        'BARRAGE-CLOSE-CLICK-NUM': function (data) {
-
-        },
-        // 弹幕启动次数
-        'BARRAGE-ACTIVE-NUM': function () {
-
-        }
-    };
-
-
 
     $(function () {
         $('#search').on('click', function (e) {
@@ -49,17 +12,14 @@ define(function(require, exports, module) {
             $$data_M.getData(date, hour, appid);
         });
 
-        $('#select_uv_pv,#select_device,#select_code_version').on('change', function () {
-            var allKeys = {
-                clientType: $('#select_uv_pv').val() + '_LOG',
-                PUV: '-' + $('#select_device').val() + '-',
-                CodeVersion: '-' + $('#select_code_version').val() + '-'
-            };
-            console.log(allKeys);
-            $$data_M.set('allKeys', allKeys);
-
-
+        $('#rangeSearch').on('click', function (e) {
+            e.preventDefault();
+            var startDate = $('#startDate').val(),
+                endDate = $('#endDate').val(),
+                appid = $('#rangeAppid').val();
+            $$data_M.getRangeData(startDate, endDate, appid);
         });
+
 
         // 日历组件
         $(".form_datetime").datetimepicker({
@@ -79,6 +39,10 @@ define(function(require, exports, module) {
 
         //
         $$event.on('EVT-CURRENT-CHANGED', function (data) {
+
+            var header = require('widget/header/header.js');
+            header(data);
+
             var isvType = require('widget/pies/isvType.js');
             isvType(data);
 
@@ -102,6 +66,7 @@ define(function(require, exports, module) {
 
             var diyKeys = require('widget/bars/allDiyKeys.js');
             diyKeys(data);
+
 
         });
 

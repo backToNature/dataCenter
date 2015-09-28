@@ -33,12 +33,13 @@
                     <div class="form-group">
                         <label for="select_code_version">代码版本:</label>
                         <select class="form-control" id="select_code_version">
+                            <option value="ALL">ALL</option>
                             <option value="V2">V2</option>
                             <option value="V1">V1</option>
                             <option value="V1">V0</option>
                         </select>
                     </div>
-                    <span id="total">总PV：</span>
+                    <span id="total"><strong>量：</strong></span>
                 </form>
             </div>
         </div>
@@ -48,65 +49,112 @@
 <div class="container-fluid content">
 
     <div class="left_form col-lg-2 col-sm-3 side-nav">
-        <div class="normal_form_wrapper">
-            <div class="normal_form_wrapper_header">
-                <h2>常规字段</h2>
-            </div>
-            <div class="normal_form_wrapper_main">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="myDate" class="col-sm-3 control-label">日期</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form_datetime" id="myDate" readonly placeholder="请选择日期">
+        <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+            <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">常规查询</a></li>
+                <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">时间段查询</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+                    <div class="normal_form_wrapper">
+                        <div class="normal_form_wrapper_header">
+                            <h2>常规查询</h2>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="myHours" class="col-sm-3 control-label">小时</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" id="myHours">
-                                <option value="allDay">allDay</option>
-                                <option value="00">00</option>
-                                <option value="00">01</option>
-                                <option value="00">02</option>
-                                <option value="00">03</option>
-                                <option value="00">04</option>
-                                <option value="00">05</option>
-                                <option value="00">06</option>
-                                <option value="00">07</option>
-                                <option value="00">08</option>
-                                <option value="00">09</option>
-                                <option value="00">10</option>
-                                <option value="00">11</option>
-                                <option value="00">12</option>
-                                <option value="00">13</option>
-                                <option value="00">14</option>
-                                <option value="00">15</option>
-                                <option value="00">16</option>
-                                <option value="00">17</option>
-                                <option value="00">18</option>
-                                <option value="00">19</option>
-                                <option value="00">20</option>
-                                <option value="00">21</option>
-                                <option value="00">22</option>
-                                <option value="00">23</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="myAppid" class="col-sm-3 control-label">appid</label>
-                        <div class="col-sm-9">
-                            <input id="myAppid" class="form-control" type="text" placeholder="请输入查询站点的appid">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
-                            <button id="search" type="submit" class="btn btn-default">查询</button>
-                        </div>
-                    </div>
-                </form>
+                        <div class="normal_form_wrapper_main">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="myDate" class="col-sm-3 control-label">date</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control form_datetime" id="myDate" readonly placeholder="请选择日期">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="myHours" class="col-sm-3 control-label">hour</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="myHours">
+                                            <option value="allDay">allDay</option>
+                                            <option value="00">00</option>
+                                            <option value="00">01</option>
+                                            <option value="00">02</option>
+                                            <option value="00">03</option>
+                                            <option value="00">04</option>
+                                            <option value="00">05</option>
+                                            <option value="00">06</option>
+                                            <option value="00">07</option>
+                                            <option value="00">08</option>
+                                            <option value="00">09</option>
+                                            <option value="00">10</option>
+                                            <option value="00">11</option>
+                                            <option value="00">12</option>
+                                            <option value="00">13</option>
+                                            <option value="00">14</option>
+                                            <option value="00">15</option>
+                                            <option value="00">16</option>
+                                            <option value="00">17</option>
+                                            <option value="00">18</option>
+                                            <option value="00">19</option>
+                                            <option value="00">20</option>
+                                            <option value="00">21</option>
+                                            <option value="00">22</option>
+                                            <option value="00">23</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="myAppid" class="col-sm-3 control-label">appid</label>
+                                    <div class="col-sm-9">
+                                        <input id="myAppid" class="form-control" type="text" placeholder="请输入查询站点的appid">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                        <button id="search" type="submit" class="btn btn-default">查询</button>
+                                    </div>
+                                </div>
+                            </form>
 
-            </div>
+                        </div>
 
+                    </div>
+
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+                    <div class="high_form_wrapper">
+                        <div class="normal_form_wrapper_header">
+                            <h2>时间段查询</h2>
+                        </div>
+                        <div class="normal_form_wrapper_main">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="startDate" class="col-sm-3 control-label">start</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control form_datetime" id="startDate" readonly placeholder="请选择日期">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate" class="col-sm-3 control-label">end</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control form_datetime" id="endDate" readonly placeholder="请选择日期">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rangeAppid" class="col-sm-3 control-label">appid</label>
+                                    <div class="col-sm-9">
+                                        <input id="rangeAppid" class="form-control" type="text" placeholder="请输入查询站点的appid">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                        <button id="rangeSearch" type="submit" class="btn btn-default">查询</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

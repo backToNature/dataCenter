@@ -9,7 +9,7 @@ define(function (require, exports, module){
             allKeys: {
                 clientType: '-WAP-',
                 PUV: 'PV_LOG',
-                CodeVersion: 'V2'
+                CodeVersion: '-ALL-'
             },
             // 当前页面数据
             currentData: {}
@@ -30,14 +30,15 @@ define(function (require, exports, module){
                 var allKeys = _this.get('allKeys');
 
                 _.mapObject(allKeys, function (val, key) {
-                    currentData = pickData(currentData, val);
+                    if (val != '-ALL-') {
+                        currentData = pickData(currentData, val);
+                    } else {
+
+                    }
                 });
 
-
-
-                var count = $$pickData.count(pickData(currentData, '-SYSTEMANDBROWSER-'));
-                $('#total').text(allKeys.PUV + ':' + count);
                 _this.set('currentData', currentData);
+
                 $$event.trigger('EVT-CURRENT-CHANGED', currentData);
 
             });
@@ -46,11 +47,13 @@ define(function (require, exports, module){
                 var currentData = _this.get('allData');
                 var allKeys = _this.get('allKeys');
                 _.mapObject(allKeys, function (val, key) {
-                    currentData = pickData(currentData, val);
+                    if (val != '-ALL-') {
+                        currentData = pickData(currentData, val);
+                    } else {
+
+                    }
                 });
 
-                var count = $$pickData.count(pickData(currentData, '-SYSTEMANDBROWSER-'));
-                $('#total').text(allKeys.PUV + ':' + count);
                 _this.set('currentData', currentData);
                 $$event.trigger('EVT-CURRENT-CHANGED', currentData);
             });
@@ -87,7 +90,34 @@ define(function (require, exports, module){
                 }
             });
 
+        },
+        getRangeData: function (startDate, endDate, appid) {
+            var _this = this;
+            var url = 'http://10.10.80.157:9081/data/day';
+
+            startDate = startDate.replace(/\-/g, '');
+            endDate = endDate.replace(/\-/g, '');
+
+            if (appid == '') {
+                url += '/total/' + startDate + '/' + endDate;
+            } else {
+                url += '/' + appid + '/' + startDate + '/' + endDate;
+            }
+
+            $.ajax({
+                url: url,
+//               url: '../test.json',
+                dataType: 'json',
+                scriptCharset: 'utf-8',
+                cache: false,
+                success: function (data) {
+                    var map = data.data;
+                    _this.set('allData', map);
+                }
+            });
+
         }
+
     });
 
     module.exports = new Model();
