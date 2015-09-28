@@ -2,7 +2,8 @@
 define(function (require, exports, module){
 
     module.exports = function (obj) {
-        $(obj.el).highcharts({
+        var $wrarpper = $(obj.el).find('.singleChart_main');
+        $wrarpper.highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,

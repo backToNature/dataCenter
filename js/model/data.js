@@ -33,6 +33,10 @@ define(function (require, exports, module){
                     currentData = pickData(currentData, val);
                 });
 
+
+
+                var count = $$pickData.count(pickData(currentData, '-SYSTEMANDBROWSER-'));
+                $('#total').text(allKeys.PUV + ':' + count);
                 _this.set('currentData', currentData);
                 $$event.trigger('EVT-CURRENT-CHANGED', currentData);
 
@@ -42,8 +46,11 @@ define(function (require, exports, module){
                 var currentData = _this.get('allData');
                 var allKeys = _this.get('allKeys');
                 _.mapObject(allKeys, function (val, key) {
-                    currentData = pickData(currentData, key);
+                    currentData = pickData(currentData, val);
                 });
+
+                var count = $$pickData.count(pickData(currentData, '-SYSTEMANDBROWSER-'));
+                $('#total').text(allKeys.PUV + ':' + count);
                 _this.set('currentData', currentData);
                 $$event.trigger('EVT-CURRENT-CHANGED', currentData);
             });
@@ -52,7 +59,7 @@ define(function (require, exports, module){
         getData: function (date, hour, appid) {
             var _this = this;
             var url = 'http://10.10.80.157:9081/data/';
-
+            date = date.replace(/\-/g, '');
 
             if (hour == 'allDay') {
                 if (appid != '') {
