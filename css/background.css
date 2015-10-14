@@ -36,3 +36,7 @@ main {
     padding: 10px 0;
     border-bottom: 1px solid #eee;
 }
+
+#diyDatas .singleChart_main{
+    width: 100%;
+}

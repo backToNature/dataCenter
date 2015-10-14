@@ -67,7 +67,6 @@ define(function(require, exports, module) {
             var diyKeys = require('widget/bars/allDiyKeys.js');
             diyKeys(data);
 
-
         });
 
     });

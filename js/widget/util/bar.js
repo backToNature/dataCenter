@@ -2,6 +2,7 @@
 define(function (require, exports, module){
     module.exports = function (obj) {
         var $wrarpper = $(obj.el).find('.singleChart_main');
+        console.log(obj.data);
         $wrarpper.highcharts({
             chart: {
                 type: 'column',
@@ -9,6 +10,9 @@ define(function (require, exports, module){
             },
             title: {
                 text: obj.title
+            },
+            scrollbar: {
+                enabled: true
             },
             xAxis: {
                 categories: obj.categories,
@@ -19,7 +23,9 @@ define(function (require, exports, module){
                         fontSize: '13px',
                         fontFamily: 'Verdana, sans-serif'
                     }
-                }
+                },
+                min: 1,
+                max: 6
             },
             yAxis: {
                 min: 0,

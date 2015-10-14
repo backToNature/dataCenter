@@ -10,7 +10,10 @@ define(function(require, exports, module) {
             '-MAINWRAPPER-DISPLAY-TIME': 'WAP评论框曝光次数',
             '-LAYER-USE-TIME': 'WAP畅点使用次数',
             '-FLOATBAR-USE-TIME': 'WAP浮层使用次数',
-            '-COLORFUL-EGGS-USE-NUM': '彩蛋功能使用次数'
+            '-COLORFUL-EGGS-USE-NUM': '彩蛋功能使用次数',
+            'SHARELIST-QZONE-CLICK-TIME': '点击分享QQ空间',
+            'SHARELIST-RENREN-CLICK-TIME': '点击分享人人网',
+            'SHARELIST-SINA-CLICK-TI': '点击分享新浪微博'
         };
 
         var barData = [];
