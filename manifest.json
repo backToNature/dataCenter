@@ -15,6 +15,14 @@
     "background": {
         "page": "./background.html"
     },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "css": ["./css/injection.css"],
+            "js": ["./lib/jquery-2.1.4.min.js", "./js/injection.js"],
+            "run_at": "document_end"
+        }
+    ],
 	"minimum_chrome_version": "18",
     "permissions": [
         "tabs",
