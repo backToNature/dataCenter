@@ -1,42 +1,32 @@
 /**
  * Created by haoguo on 2015/10/15.
  */
-$(function () {
 
-    var common = function () {
-        var loading = function () {
-            var $press = $('<div class="cyan-data-press"></div>'),
-                $spinner = $('<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>');
-            $('body').append($press);
-            $('body').append($spinner);
-            window.setTimeout(function () {
-                $press.remove();
-                $spinner.remove();
-                $('body').fadeOut().fadeIn(500);
-            }, 1000);
-        };
-        loading();
+    function loadJs(src, fun) {
+        var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
 
-    };
+        var script = document.createElement('script');
+        script.setAttribute('type', 'text/javascript');
+        script.setAttribute('charset', 'UTF-8');
+        script.setAttribute('src', src);
 
-    var wap = function () {
-        common();
-    };
-
-    var pc = function () {
-        common();
-    };
-
-
-
-    if ($('#SOHUCS').length) {
-        // 如果有接入畅言得话
-        if ($('#cy-cbox-wrapper').length) {
-            // wap站
-            wap();
-        } else {
-            // PC站
-            pc();
+        if (typeof fun === 'function') {
+            if (window.attachEvent) {
+                script.onreadystatechange = function () {
+                    var r = script.readyState;
+                    if (r === 'loaded' || r === 'complete') {
+                        script.onreadystatechange = null;
+                        fun();
+                    }
+                };
+            } else {
+                script.onload = fun;
+            }
         }
+
+        head.appendChild(script);
     }
-});
+
+    loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
+        loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
+    });

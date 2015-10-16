@@ -1,4 +1,5 @@
 $(function () {
+
     $('#toBackGround').on('click', function (e) {
         e.preventDefault();
 
@@ -10,6 +11,8 @@ $(function () {
 
         })
     });
+
+
     chrome.tabs.query({active: true}, function(tabs) {
         var tab = tabs[0];
 
