@@ -26,6 +26,8 @@
 
         head.appendChild(script);
     }
+	
+	
 
     loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
         loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
