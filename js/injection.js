@@ -25,19 +25,20 @@ function loadJs(src, fun) {
 
     head.appendChild(script);
 }
-	
-	
+
+
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
     if (request.cyDataStatus === "cyDataActive"){
         loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
-            loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
+//            loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
+            loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js', function () {
+
+            });
+
         });
     } else if (request.cyDataStatus === "cyDataClose") {
 
     }
 });
-
-
-
