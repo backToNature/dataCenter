@@ -25,6 +25,8 @@ function loadJs(src, fun) {
 
     head.appendChild(script);
 }
+	
+	
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
