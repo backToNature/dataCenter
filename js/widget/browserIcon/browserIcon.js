@@ -1,9 +1,11 @@
 define(function(require, exports, module) {
     var status = 'close';
-
+    var path = location.href.replace('background.html', '');
     // 激活标签的逻辑
     var active = function (tab) {
+        console.log(path);
         chrome.tabs.sendMessage(tab.id,{
+            extensionPath: path,
             cyDataStatus: "cyDataActive"
         }, function(response) {
             alert(response.farewell);
@@ -39,6 +41,7 @@ define(function(require, exports, module) {
         chrome.tabs.onUpdated.addListener(function(id, info, tab) {
             if(info.status === 'complete' && status === 'active') {
                 chrome.tabs.sendMessage(tab.id,{
+                    extensionPath: path,
                     cyDataStatus: "cyDataActive"
                 }, function(response) {
                     alert(response.farewell);

@@ -18,7 +18,7 @@
         {
             "matches": ["http://*/*", "https://*/*"],
             "css": ["./css/injection.css"],
-            "js": ["./lib/jquery-2.1.4.min.js", "./js/injection.js"],
+            "js": ["./lib/jquery-2.1.4.min.js","./lib/localforage.nopromises.min.js","./js/injection.js"],
             "run_at": "document_end"
         }
     ],
