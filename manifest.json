@@ -4,7 +4,8 @@
 	"description": "畅言数据插件",
 	"manifest_version": 2,
     "browser_action": {
-        "default_icon": "./images/icon-black.png"
+        "default_icon": "./images/icon-black.png",
+        "default_popup": "../popup.html"
     },
     "icons": {
         "128": "./images/logo128.png",

@@ -1,5 +1,5 @@
 $(function () {
-
+    var status = 'close';
     $('#toBackGround').on('click', function (e) {
         e.preventDefault();
 
@@ -12,8 +12,28 @@ $(function () {
         })
     });
 
+    $('#monitor').on('click', function (e) {
+        e.preventDefault();
+        // 激活标签的逻辑
+        var active = function (tab) {
+            chrome.tabs.sendMessage(tab.id,{
+                extensionPath: path,
+                cyDataStatus: "cyDataActive"
+            }, function(response) {
+                alert(response.farewell);
+            });
+        };
 
-    chrome.browserAction.onClicked.addListener(function(tab) {
-        alert(1);
+        // 关闭标签的逻辑
+        var close = function (tab) {
+            chrome.tabs.sendMessage(tab.id,{
+                cyDataStatus: "cyDataClose"
+            }, function(response) {
+                alert(response.farewell);
+            });
+        };
+
+
     });
+
 });

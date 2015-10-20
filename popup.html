@@ -3,12 +3,23 @@
   <head>
     <title>Getting Started Extension's Popup</title>
     <meta charset="utf-8">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
+      * {
+          text-decoration: none;
+          margin: 0;
+          padding: 0;
+      }
       ul {
           list-style: none;
+          margin-bottom: 0;
+      }
+      ul li {
+          text-align: left;
+          padding: 5px;
       }
       body {
-        min-width:200px;
+        min-width: 150px;
         overflow-x:hidden;
       }
 
@@ -20,15 +31,21 @@
         height:75px;
       }
         .backPop li a{
-            font-size: 20px;
+            font-size: 15px;
         }
+      .backPop li:hover {
+          background: #ddd;
+      }
 
     </style>
       <ul class="backPop">
-          <li><a href="#" id="toBackGround">到数据页面</a></li>
+          <li><a href="#" id="monitor"><span class="glyphicon glyphicon-off"></span> 监控</a></li>
+          <li><a href="#" id="toBackGround"><span class="glyphicon glyphicon-search"></span> 数据查看</a></li>
+          <li><a href="#" id="toBackGround"><span class="glyphicon glyphicon-user"></span> 意见反馈</a></li>
       </ul>
     <script src="lib/jquery-2.1.4.min.js"></script>
     <script src="lib/Underscore.1.8.2.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
     <script src="./js/popup.js"></script>
   </head>
   <body>
