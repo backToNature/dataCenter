@@ -56,6 +56,5 @@ define(function(require, exports, module) {
         eventBind();
     };
 
-
     module.exports = init;
 });
