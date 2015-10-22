@@ -39,7 +39,9 @@ function loadCss(url) {
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.cyDataStatus === "cyDataActive"){
         localforage.setItem('cyData_extension', request);
-        loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+        loadJs('http://localhost/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+
+        // loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
 //        loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
 //            loadCss('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/tpl.css');
 ////            loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
