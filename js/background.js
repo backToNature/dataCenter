@@ -4,7 +4,6 @@ define(function(require, exports, module) {
     var $$data_M = require('model/data.js');
     var $$event = Backbone.Events;
 
-    require('widget/browserIcon/browserIcon.js')();
     $(function () {
         $('#search').on('click', function (e) {
             e.preventDefault();

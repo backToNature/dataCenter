@@ -38,16 +38,20 @@ function loadCss(url) {
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.cyDataStatus === "cyDataActive"){
-        loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
-            loadCss('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/tpl.css');
-//            loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
-
-            localforage.setItem('cyData_extension', request);
-            loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js', function () {
-            });
-
-        });
+        localforage.setItem('cyData_extension', request);
+        loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+//        loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
+//            loadCss('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/tpl.css');
+////            loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
+//            localforage.setItem('cyData_extension', request);
+//            loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js', function () {
+//            });
+//        });
     } else if (request.cyDataStatus === "cyDataClose") {
-
+        var $cyanDataWrapper = $('#cyanData-wrapper');
+        $cyanDataWrapper.css('width', 0);
+        window.setTimeout(function () {
+            $cyanDataWrapper.remove();
+        }, 1000);
     }
 });
