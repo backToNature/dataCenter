@@ -36,7 +36,6 @@ $(function () {
         e.preventDefault();
         var status = window.localStorage.getItem('iconStatus');
 
-        console.log(status);
         if (!status || status == 0) {
             // 激活标签的逻辑
             chrome.browserAction.setIcon({path: './images/icon.png'});

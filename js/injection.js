@@ -36,12 +36,26 @@ function loadCss(url) {
     container.appendChild(addStyle);
 }
 
+function getData() {
+    if ($('#SOHUCS').length) {
+
+        if ($('#cy-cbox-wrapper').length) {
+
+        } else {
+//            var dataCenter = window.changyan.global.dev.get('/');
+//            console.log(window.changyan);
+        }
+
+    }
+
+}
+//getData();
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.cyDataStatus === "cyDataActive"){
         localforage.setItem('cyData_extension', request);
-        loadJs('http://localhost/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
-
-        // loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+//        loadJs('http://localhost/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+        getData();
+        loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
 //        loadJs('http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js', function () {
 //            loadCss('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/tpl.css');
 ////            loadJs('http://backtonaturedemo.github.io/frontend/changyan/data-center/injection.js');
