@@ -39,9 +39,9 @@ function loadCss(url) {
 //getData();
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.cyDataStatus === "cyDataActive"){
-       loadJs('http://localhost/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
-        // loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
-
+//       loadJs('http://localhost/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+//        loadJs('http://localhost:63342/dev/backToNaturedemo.github.io/frontend/changyan/data-center/injection.js');
+        loadJs('http://10.2.58.184:8099/adapter.js');
     } else if (request.cyDataStatus === "cyDataClose") {
         var $cyanDataWrapper = $('#cyanData-wrapper');
         $cyanDataWrapper.css('width', 0);
